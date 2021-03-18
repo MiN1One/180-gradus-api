@@ -1,0 +1,37 @@
+{
+  "name": "180api",
+  "version": "1.0.0",
+  "description": "ALPHA",
+  "main": "server.js",
+  "dependencies": {
+    "@mtproto/core": "5.3.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongodb": "^3.6.4",
+    "mongoose": "^5.12.0",
+    "node-telegram-bot-api": "^0.51.0",
+    "nodemon": "^2.0.7",
+    "npm-run-all": "^4.1.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "nodemon server.js",
+    "start:prod@windows": "set NODE_ENV=production&&nodemon server.js",
+    "start:prod": "NODE_ENV=production nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MiN1One/180-gradus-api.git"
+  },
+  "keywords": [
+    "180Gradus",
+    "API"
+  ],
+  "author": "MiN1One",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MiN1One/180-gradus-api/issues"
+  },
+  "homepage": "https://github.com/MiN1One/180-gradus-api#readme"
+}
