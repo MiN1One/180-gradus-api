@@ -10,16 +10,18 @@ const app = require('./app');
 require('./telegram');
 
 // Connect DB
-// const DB = process.env.DB.replace('<PASSWORD>', process.env.DB_PASSWORD);
-// mongoose
-//     .connect(DB, {
-//         useNewUrlParser: true,
-//         useCreateIndex: true,
-//         useFindAndModify: false,
-//         useUnifiedTopology: true
-//     })
-//     .then(() => console.log('DB CONNECTION SUCCESSFUL'));
+const DB = process.env.DB.replace('<PASSWORD>', process.env.DB_PASSWORD);
+mongoose
+    .connect(DB, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useCreateIndex: true,
+        autoIndex: true,
+        useFindAndModify: false
+    })
+    .then(() => console.log('DB CONNECTION SUCCESSFUL'))
+    .catch((er) => console.error(er));
 
 // Listen
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3010;
 app.listen(port, () => console.log('Listening on port ' + port));

@@ -1,14 +1,19 @@
 const express = require('express');
-const controller = require('../controllers/skinsController');
+const deviceController = require('../controllers/deviceController');
 
 const router = express.Router();
 
 router
     .route('/')
-    .get(controller.getSkins);
+    .get(deviceController.getAllDevices)
+    .post(deviceController.addDevice)
 
 router
-    .route('/:category')
-    .get(controller.getSkins)
+    .route('/:name')
+    .get(deviceController.getDevices)
+    .patch(deviceController.updateDevice)
+    .delete(deviceController.deleteDevice);
+
+
 
 module.exports = router;
