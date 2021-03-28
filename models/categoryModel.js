@@ -13,6 +13,10 @@ const CategorySchema = new Schema({
     type: {
         type: String,
         default: 'skins'
+    },
+    exclusive: {
+        type: Boolean,
+        default: false
     }
 });
 

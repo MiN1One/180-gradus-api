@@ -45,15 +45,19 @@ const DeviceSchema = new Schema(
         exclusive: {
             type: Boolean,
             default: false
+        },
+        tags: {
+            type: String,
+            required: [true, 'Tags are required for better SEO']
         }
     },
-    // {
-    //     toJSON: { virtuals: true },
-    //     toObject: { virtuals: true },
-    // }
+    {
+        toJSON: { virtuals: true },
+        toObject: { virtuals: true },
+    }
 );
 
-DeviceSchema.index({ device: 'text', deviceVendor: 'text' });
+DeviceSchema.index({ device: 'text', deviceVendor: 'text', tags: 'text' });
 
 // DeviceSchema.virtual('slug').get(function() {
 //     console.log(this.device);
