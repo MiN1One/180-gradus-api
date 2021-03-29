@@ -25,13 +25,11 @@ app.use((req, res, next) => {
     next();
 });
 
-
 // ---------- ROUTES ----------
 
 app.use('/api/order', orderRoute);
 app.use('/api/categories', categoriesRoute);
 app.use('/api/skins', skinsRoute);
-
 
 // ---------- ERROR HANDLING ----------
 
@@ -45,5 +43,7 @@ app.all('*', (req, res, next) => {
 });
 
 app.use(errorController);
+
+console.log(`\nAPP MODE: ${process.env.NODE_ENV}\n`);
 
 module.exports = app;

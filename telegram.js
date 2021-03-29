@@ -13,7 +13,7 @@ bot.onText(/\/echo (.+)/, (msg, match) => {
 bot.on('message', (interaction) => {
     const id = interaction.chat.id;
     console.log(interaction);    
-    bot.sendMessage(id, 'Received your messagesildufvosj');
+    bot.sendMessage(id, 'Received your message');
 });
 
 bot.on('polling_error', (er) => {
