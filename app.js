@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const AppError = require('./utils/AppError');
+const morgan = require('morgan');
 
 const errorController = require('./controllers/errorController');
 
@@ -12,6 +13,8 @@ const categoriesRoute = require('./routes/categoriesRoute');
 const app = express();
 
 // --------- GLOBAL MIDDLEWARES ---------
+
+if (process.env.NODE_ENV === 'development') app.use(morgan('dev'));
 
 // Enable cors policy bypass
 app.use(cors());

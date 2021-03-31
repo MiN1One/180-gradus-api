@@ -1,75 +1,17 @@
 const Device = require('../models/deviceModel');
-const ApiFeatures = require('../utils/ApiFeatures');
-const catchAsync = require('../utils/catchAsync');
-const AppError = require('../utils/ApiFeatures');
+const factory = require('./handleFactory');
+// const catchAsync = require('../utils/catchAsync');
+// const AppError = require('../utils/ApiFeatures');
+// const ApiFeatures = require('../utils/ApiFeatures');
 
-exports.getAllDevices = catchAsync(async (req, res, next) => {
-    const query = new ApiFeatures(Device.find(), req.query)
-        .search()
-        .project()
-        .filter()
-        .sort()
-        .mongooseQuery;
+exports.setParams = (req) => {
+    // if (!req.params.id)
+};
 
-    const devices = await query;
+exports.getAllDevices = factory.getAll(Device);
+exports.getDevice = factory.getOne(Device);
+exports.addDevice = factory.addOne(Device);
+exports.updateDevice = factory.updateOne(Device);
+exports.deleteDevice = factory.deleteOne(Device);
 
-    res.status(200).json({
-        status: 'success',
-        data: {
-            devices
-        }
-    });
-});
 
-exports.getDevice = catchAsync(async (req, res, next) => {
-    const query = new ApiFeatures(Device.findById(req.params.id), req.query)
-        .project()
-        .mongooseQuery;
-
-    const device = await query;
-
-    if (!device) 
-        return next(new AppError('Device with this id is not found', 404));
-
-    res.status(200).json({
-        status: 'success',
-        data: device 
-    });
-});
-
-exports.addDevice = catchAsync(async (req, res, next) => {
-    const device = await Device.create(req.body);
-
-    res.status(201).json({
-        status: 'success',
-        data: device
-    });
-});
-
-exports.deleteDevice = catchAsync(async (req, res, next) => {
-    const device = await Device.findByIdAndDelete(req.params.id);
-
-    if (!device) 
-        return next(new AppError('Device with this id is not found', 404));
-
-    res.status(204).json({
-        status: 'success',
-        data: null
-    });
-});
-
-exports.updateDevice = catchAsync(async (req, res, next) => {
-    const device = await Device.findByIdAndUpdate(
-        req.params.id,
-        req.body, 
-        { new: true, runValidators: true }
-    );
-
-    if (!device) 
-        return next(new AppError('Device with this id is not found', 404));
-
-    res.status(202).json({
-        status: 'success',
-        data: device
-    });
-});

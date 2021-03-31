@@ -51,7 +51,6 @@ class ApiFeatures {
 
     search() {
         if (this.expressQuery.search) {
-            console.log('search query ' + this.expressQuery.search);
             this.mongooseQuery = this.mongooseQuery.find({
                 $text: {
                     $search: this.expressQuery.search,

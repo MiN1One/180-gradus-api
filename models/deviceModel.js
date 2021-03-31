@@ -1,5 +1,4 @@
 const { Schema, model } = require('mongoose');
-const slugify = require('slugify');
 
 const DeviceSchema = new Schema(
     {
@@ -10,7 +9,8 @@ const DeviceSchema = new Schema(
         },
         numberOfPurchases: {
             type: Number,
-            default: 0
+            default: 0,
+            select: false
         },
         deviceVendor: {
             type: String,
@@ -21,22 +21,30 @@ const DeviceSchema = new Schema(
             default: 'skins'
         },
         category: {
-            type: String,
-            trim: true,
-            required: [true, 'Category is required']
+            type: Schema.Types.ObjectId,
+            ref: 'Category',
+            required: [true, 'Device must belong to a category']
         },
         default: {
             type: String,
             required: [true, 'Default device image is required']
         },
-        skins: {
-            type: [String],
-            required: [true, 'Skins are required']
-        },
-        price: {
-            type: Number,
-            required: [true, 'Price is must-have']
-        },
+        skins: [
+            {
+                name: {
+                    type: String,
+                    required: [true, 'Device must have skins']
+                },
+                image: {
+                    type: String,
+                    required: [true, 'Skin must have an image']
+                },
+                price: {
+                    type: String,
+                    required: [true, 'Skin must have an price']
+                }
+            }
+        ],
         created: {
             type: Date,
             default: Date.now(),
@@ -48,7 +56,8 @@ const DeviceSchema = new Schema(
         },
         tags: {
             type: String,
-            required: [true, 'Tags are required for better SEO']
+            required: [true, 'Tags are required for better SEO'],
+            select: false
         }
     },
     {

@@ -1,7 +1,7 @@
 const express = require('express');
 const deviceController = require('../controllers/deviceController');
 
-const router = express.Router();
+const router = express.Router({ mergeParams: true });
 
 router
     .route('/')
