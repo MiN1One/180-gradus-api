@@ -8,6 +8,18 @@ exports.setParams = (req) => {
     // if (!req.params.id)
 };
 
+exports.getPopular = (req, res, next) => {
+    req.query = {
+        ...req.query,
+        sort: '-numberOfPurchases',
+        limit: 7,
+        project: '-skins,-default',
+        numberOfPurchases: { $ne: 0 }
+    };
+
+    next();
+};
+
 exports.getAllDevices = factory.getAll(Device);
 exports.getDevice = factory.getOne(Device);
 exports.addDevice = factory.addOne(Device);

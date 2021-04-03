@@ -2,7 +2,7 @@ const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 
 process.on('uncaughtException', (er) => {
-    console.log('UNCAUGHT EXCEPTION, Shutting down...');
+    console.log('UNCAUGHT EXCEPTION! Shutting down...');
     console.log(er.name, er.message);
     process.exit(1);
 });
@@ -16,9 +16,11 @@ const app = require('./app');
 require('./telegram');
 
 // Connect DB
-const DB = process.env.DB.replace('<PASSWORD>', process.env.DB_PASSWORD);
+// const DB = process.env.DB.replace('<PASSWORD>', process.env.DB_PASSWORD);
+const DB_LOCAL = process.env.DB_LOCAL;
 mongoose
-    .connect(DB, {
+    // .connect(DB, {
+    .connect(DB_LOCAL, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex: true,
@@ -33,7 +35,7 @@ const port = process.env.PORT || 3003;
 const server = app.listen(port, () => console.log('Listening on port ' + port));
 
 process.on('unhandledRejection', (er) => {
-    console.log('UNHANDLED REJECTION, Shutting down...');
+    console.log('UNHANDLED REJECTION! Shutting down...');
     console.log(er.name, er.message);
     server.close(() => process.exit(1));
 });

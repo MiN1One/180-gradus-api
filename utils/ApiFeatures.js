@@ -6,7 +6,7 @@ class ApiFeatures {
 
     filter() {
         const queryObj = { ...this.expressQuery };
-        const removalList = ['project', 'page', 'skip', 'sort', 'search'];
+        const removalList = ['project', 'page', 'sort', 'search', 'limit'];
         removalList.forEach(el => delete queryObj[el]);
 
         this.mongooseQuery = this.mongooseQuery.find(queryObj);
@@ -42,8 +42,6 @@ class ApiFeatures {
             const skip = +this.expressQuery.limit * (+this.expressQuery.page - 1)
 
             this.mongooseQuery = this.mongooseQuery.skip(skip).limit(+this.expressQuery.limit);
-        } else {
-            this.mongooseQuery = this.mongooseQuery.limit(20);
         }
 
         return this;
@@ -60,6 +58,14 @@ class ApiFeatures {
             });
         }
 
+        return this;
+    }
+
+    limit() {
+        if (this.expressQuery.limit)
+            this.mongooseQuery = this.mongooseQuery.limit(+this.expressQuery.limit);
+        else this.mongooseQuery = this.mongooseQuery.limit(20);
+        
         return this;
     }
 }

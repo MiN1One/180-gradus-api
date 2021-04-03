@@ -1,17 +1,21 @@
 const express = require('express');
-const deviceController = require('../controllers/deviceController');
+const controller = require('../controllers/deviceController');
 
 const router = express.Router({ mergeParams: true });
 
 router
+    .route('/popular')
+    .get(controller.getPopular, controller.getAllDevices);
+
+router
     .route('/')
-    .get(deviceController.getAllDevices)
-    .post(deviceController.addDevice);
+    .get(controller.getAllDevices)
+    .post(controller.addDevice);
 
 router
     .route('/:id')
-    .get(deviceController.getDevice)
-    .patch(deviceController.updateDevice)
-    .delete(deviceController.deleteDevice);
+    .get(controller.getDevice)
+    .patch(controller.updateDevice)
+    .delete(controller.deleteDevice);
 
 module.exports = router;
