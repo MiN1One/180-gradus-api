@@ -1,12 +1,11 @@
+const multer = require('multer');
+const fs = require('fs');
+
 const Device = require('../models/deviceModel');
 const factory = require('./handleFactory');
-// const catchAsync = require('../utils/catchAsync');
-// const AppError = require('../utils/ApiFeatures');
-// const ApiFeatures = require('../utils/ApiFeatures');
+const catchAsync = require('../utils/catchAsync');
 
-exports.setParams = (req) => {
-    // if (!req.params.id)
-};
+const upload = multer({ dest: 'public/images/' })
 
 exports.getPopular = (req, res, next) => {
     req.query = {
@@ -14,11 +13,29 @@ exports.getPopular = (req, res, next) => {
         sort: '-numberOfPurchases',
         limit: 7,
         project: '-skins,-default',
-        numberOfPurchases: { $ne: 0 }
+        numberOfPurchases: { $gt: 0 }
     };
 
     next();
 };
+
+exports.createTranslations = catchAsync(async (req, res, next) => {
+    if (req.body.translations) {
+        req.body.translations.forEach((lang, index) => {
+            const translations = {};
+            req.body.skins.forEach(el => translations[el.name] = el.translation[index]);
+
+            fs.writeFile(
+                `${__dirname}/../public/locales/${lang}/${req.body.device}.json`,
+                JSON.stringify(translations),
+                null,
+                () => next()
+            );
+        });
+    }
+
+    next();
+});
 
 exports.getAllDevices = factory.getAll(Device);
 exports.getDevice = factory.getOne(Device);

@@ -1,16 +1,19 @@
 const { Schema, model } = require('mongoose');
 
-const DeviceSchema = new Schema(
+const deviceSchema = new Schema(
     {
         device: {
             type: String,
             required: [true, 'Device field is required'],
             unique: true
         },
+        active: {
+            type: Boolean,
+            default: true
+        },
         numberOfPurchases: {
             type: Number,
-            default: 0,
-            select: false
+            default: 0
         },
         deviceVendor: {
             type: String,
@@ -66,13 +69,18 @@ const DeviceSchema = new Schema(
     }
 );
 
-DeviceSchema.index({ device: 'text', deviceVendor: 'text', tags: 'text' });
+deviceSchema.index({ device: 'text', deviceVendor: 'text', tags: 'text' });
 
-// DeviceSchema.virtual('slug').get(function() {
+// deviceSchema.virtual('slug').get(function() {
 //     console.log(this.device);
 //     // return slugify(this.device);
 // });
 
-const deviceModel = model('device', DeviceSchema);
+// QUERY
+deviceSchema.pre(/^find/, function() {
+    this.find({ skins: { $ne: [] } });
+});
+
+const deviceModel = model('device', deviceSchema);
 
 module.exports = deviceModel;

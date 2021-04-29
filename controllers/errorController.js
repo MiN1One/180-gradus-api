@@ -11,6 +11,10 @@ const handleValidationErr = (er) => {
     return new AppError(message, 400);
 };
 
+const handleJWTExpiredErr = () => {
+    
+};
+
 const handleDuplicateDocErr = () => {
     const message = 'Request failed: duplicate document';
     return new AppError(message, 400);
@@ -45,14 +49,14 @@ module.exports = (err, req, res, next) => {
     err.statusCode = err.statusCode || 500;
     err.status = err.status || 'error';
 
-    console.log(err.name);
+    console.log(err);
 
     if (process.env.NODE_ENV === 'development') {
         sendErrorForDev(err, res);
     } else if (process.env.NODE_ENV === 'production') {
         if (err.name === 'CastError') err = handleCastError(err);
-        else if (err.code === 11000) err = handleDuplicateDocErr();
-        else if (err.name === 'ValidationError') err = handleValidationErr(err);
+        if (err.code === '11000') err = handleDuplicateDocErr();
+        if (err.name === 'ValidationError') err = handleValidationErr(err);
 
         sendErrorForProd(err, res);
     }

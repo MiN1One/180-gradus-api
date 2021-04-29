@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-const CategorySchema = new Schema(
+const categorySchema = new Schema(
     {
         name: {
             type: String,
@@ -26,13 +26,13 @@ const CategorySchema = new Schema(
     }
 );
 
-CategorySchema.virtual('devices', {
+categorySchema.virtual('devices', {
     ref: 'device',
     foreignField: 'category',
     localField: '_id',
     justOne: false
 });
 
-const CategoryModel = model('Category', CategorySchema);
+const CategoryModel = model('Category', categorySchema);
 
 module.exports = CategoryModel;

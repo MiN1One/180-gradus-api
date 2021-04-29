@@ -28,7 +28,6 @@ mongoose
         useFindAndModify: false
     })
     .then(() => console.log('DB CONNECTION SUCCESSFUL'))
-    .catch((er) => console.error(er));
 
 // Listen
 const port = process.env.PORT || 3003;
