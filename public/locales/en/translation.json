@@ -1,0 +1,69 @@
+{
+    "main": {
+        "search": "Search...",
+        "reserved": "All rights reserved",
+        "find us": "Find us on social media",
+        "contact us": "Contact us",
+        "explore": "Explore",
+        "hero text": {
+            "p1": "Reacreate your phone",
+            "p2": "Best choice for you and your device"
+        },
+        "added cart": "Item added to cart",
+        "added fav": "Item added to favorites",
+        "edit": "Edit",
+        "save": "Save",
+        "total": "Total",
+        "categories": "Categories",
+        "proceed": "Proceed",
+        "to cart": "Add to cart",
+        "cancel": "Cancel",
+        "remove": "Remove",
+        "order": "Order",
+        "num skins": "Number of skins",
+        "no results": "Nothing found",
+        "in the cart": "In the cart",
+        "close": "Close",
+        "basic": "Basic",
+        "nothing here": "Nothing here",
+        "not found": "Reqested page is not found",
+        "error": "Error",
+        "go back": "Go back",
+        "wrong address": "Make sure you have right address",
+        "error reason": "This might be due to poor internet connection or server error.",
+        "success": "Success",
+        "success text": { 
+            "p1": "Thank you for choosing us. Your order has been sent for processing and will be delivered  within 2 hours You can read more about delivery proccess ",
+            "p2": "here."
+        },
+        "telegram text": "You need to go to telegram to complete your order. Send us delivery address.",
+        "coming soon": "Coming soon!",
+        "confirm": "Are you sure to continue?",
+        "to delete": "Items to delete"
+    },
+    "nav": {
+        "set": "Set",
+        "summary": "Summary",
+        "collection": "Collection",
+        "laptops": "Laptops",
+        "phones": "Phones",
+        "consoles": "Consoles",
+        "skins": "Skins",
+        "home": "Home",
+        "about": "About us",
+        "popular": "Popular",
+        "privacy": "Privacy policy",
+        "help": "Help",
+        "delivery": "Delivery",
+        "refund": "Refund",
+        "exclusive": "Exclusive Edition",
+        "cart": "Cart",
+        "favorites": "Favorites",
+        "categories": "Categories",
+        "all skins": "All skins",
+        "menu": "Menu"
+    },
+    "text": {
+        "contact": "You can contact us at any convenient for you time via phone 71-200-0060 or email 180gradus@enter.org"
+    }
+}
