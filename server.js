@@ -16,11 +16,11 @@ const app = require('./app');
 require('./telegram');
 
 // Connect DB
-// const DB = process.env.DB.replace('<PASSWORD>', process.env.DB_PASSWORD);
-const DB_LOCAL = process.env.DB_LOCAL;
+const DB = process.env.DB.replace('<PASSWORD>', process.env.DB_PASSWORD);
+// const DB_LOCAL = process.env.DB_LOCAL;
 mongoose
-    // .connect(DB, {
-    .connect(DB_LOCAL, {
+    .connect(DB, {
+    // .connect(DB_LOCAL, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex: true,

@@ -53,10 +53,6 @@ const deviceSchema = new Schema(
             default: Date.now(),
             select: false
         },
-        exclusive: {
-            type: Boolean,
-            default: false
-        },
         tags: {
             type: String,
             required: [true, 'Tags are required for better SEO'],

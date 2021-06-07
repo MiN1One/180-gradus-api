@@ -7,7 +7,7 @@ const multer = require('multer');
 const helmet = require('helmet');
 const xss = require('xss-clean');
 const hpp = require('hpp');
-const sanitizer = require('sanitizer');
+const sanitizer = require('express-mongo-sanitize');
 
 const errorController = require('./controllers/errorController');
 
