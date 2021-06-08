@@ -8,6 +8,7 @@ const helmet = require('helmet');
 const xss = require('xss-clean');
 const hpp = require('hpp');
 const sanitizer = require('express-mongo-sanitize');
+const compression = require('compression');
 
 const errorController = require('./controllers/errorController');
 
@@ -30,7 +31,7 @@ if (process.env.NODE_ENV === 'development') app.use(morgan('dev'));
 
 // Enable cors policy bypass
 app.use(cors());
-
+app.use(compression());
 app.use(express.json({ limit: '10kb' }));
 app.use(cookieParser());
 
