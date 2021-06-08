@@ -1,0 +1,34 @@
+[
+  {
+    "popper": "P30-Pro-1.png",
+    "cover": "P30-Pro-2.png",
+    "text": {
+      "main": "Maxmimum wear",
+      "sub": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus faucibus."
+    }
+  },
+  {
+    "popper": "P30-Pro-1.png",
+    "cover": "P30-Pro-2.png",
+    "text": {
+      "main": "Protective material",
+      "sub": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus faucibus."
+    }
+  },
+  {
+    "popper": "P30-Pro-1.png",
+    "cover": "P30-Pro-2.png",
+    "text": {
+      "main": "Rich skin set",
+      "sub": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus faucibus."
+    }
+  },
+  {
+    "popper": "P30-Pro-1.png",
+    "cover": "P30-Pro-2.png",
+    "text": {
+      "main": "Super accurate cut",
+      "sub": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus faucibus."
+    }
+  }
+]
